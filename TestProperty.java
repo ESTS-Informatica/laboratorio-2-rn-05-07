@@ -55,4 +55,9 @@ public class TestProperty
         assertEquals("Descricao    : T3 Monte Belo\nPreco        : 150000.0",
                      property1.toString());
     }
+    
+    @Test
+    public void testCreateSell(){
+        
+    }
 }

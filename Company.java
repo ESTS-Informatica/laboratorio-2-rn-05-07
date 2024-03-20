@@ -115,7 +115,7 @@ public class Company {
             }
         }
         properties.add(property);
-        return true;        // dummy implementation
+        return true; 
     }
 
     /**
@@ -137,7 +137,15 @@ public class Company {
      * @return true If the request succeeds, false otherwise.
      */
     public boolean createSell(User client, User seller, Property property) {
-        return true;         // dummy implementation
+        //if (property == null) { return false; }
+        Sell dummySell = new Sell(client, seller, property);
+        for(Sell sellerInCompany: this.sells){
+            if(dummySell.equals(sellerInCompany)){
+                return false;
+            }
+        }
+        sells.add(new Sell(client, seller, property));
+        return true; 
     }
 
     /**
@@ -147,7 +155,13 @@ public class Company {
      * @return The total number of sells in the year.
      */
     public int calculateSellsOfTheYear(int year) {
-        return 0;         // dummy implementation
+        int result = 0;
+        for(Sell sellInList: sells){
+            if(sellInList.getDate().getYear() == year) {
+                result++;
+            }
+        }
+        return result;
     }
 
     /**
@@ -156,8 +170,18 @@ public class Company {
      * @param year
      * @return The name of the seller of the year.
      */
-    public String findSellerOfTheYear(int year) {
-        return null;         // dummy implementation
+    public User findSellerOfTheYear(int year) {
+        User result = null;
+        int topSells = 0;
+        for(Sell sellInList: sells){
+            if(sellInList.getDate().getYear() == year){
+                if(sellInList.getSeller() != result){
+                    topSells++;
+                    result = sellInList.getSeller();
+                }
+            }
+        }
+        return result;
     }
 
 }

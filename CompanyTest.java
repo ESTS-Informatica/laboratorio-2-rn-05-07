@@ -1,5 +1,5 @@
 
-
+import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,6 +20,7 @@ public class CompanyTest
     User seller2;
     Property property1;
     Property property2;
+    Sell sell1;
     /**
      * Construtor default para a classe de teste CompanyTest
      */
@@ -41,7 +42,7 @@ public class CompanyTest
         seller2 = new User("Rodrigo Rodrigues", "966777152", "roro@remax.pt");
         property1 = new Property ("T1", 150000.0);
         property2 = new Property ("T3", 160000.0);
-        
+        sell1 = new Sell(client1, seller1, property1);
     }
 
     /**
@@ -120,5 +121,13 @@ public class CompanyTest
     @Test
     public void testRegisterProperty(){
         company1.registerProperty(property1);
+    }
+    @Test
+    public void testCalculateSellsOfTheYear(){
+        company1.calculateSellsOfTheYear(LocalDate.now().getYear());
+    }
+    @Test
+    public void testFindSellerOfTheYear(){
+        company1.findSellerOfTheYear(LocalDate.now().getYear());
     }
 }
