@@ -22,7 +22,7 @@ public class Property {
     public Property(String description, double price) {
         this.description = description;
         this.price = price;
-        this.id = Integer.toString(++numberOfPropreties);
+        this.id = String.valueOf(++numberOfPropreties);
     }
 
     /**
@@ -66,7 +66,7 @@ public class Property {
 
     @Override
     public String toString() {
-        return null;
+        return "Descricao    : " + getDescription() + "\nPreco        : " + getPrice();
     }
     
 }
